@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import RegistrationForm
+from .forms import RegistrationForm,AccountForm
 from django.contrib.auth.models import User
 from .models import UserRegistrationModel
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from .models import UserRegistrationModel
+from .models import UserRegistrationModel,Account
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.shortcuts import render, redirect,get_object_or_404
 
 
 def register(request):
@@ -55,8 +56,42 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    if request.method == "POST":
+        account_name = request.POST['account_name']
+        account_balance = request.POST['account_balance']
+        # Assuming the Account model has fields `name` and `balance`
+        Account.objects.create(name=account_name, balance=account_balance, user=request.user)
+        return redirect('dashboard')
+
+    accounts = Account.objects.filter(user=request.user)
+    return render(request, 'dashboard.html', {'accounts': accounts})
+
+def add_account(request):
+    if request.method == 'POST':
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.user = request.user
+            account.save()
+            return redirect('dashboard')  # Redirect to the dashboard or another relevant page
+    else:
+        form = AccountForm()
+
+    return render(request, 'add_account.html', {'form': form})
 
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def view_account(request, account_id):
+    account = get_object_or_404(Account, id=account_id, user=request.user)
+    return render(request, 'view_account.html', {'account': account})
+
+@login_required
+def delete_account(request, account_id):
+    account = get_object_or_404(Account, id=account_id, user=request.user)
+    if request.method == 'POST':
+        account.delete()
+        return redirect('dashboard')
+    return render(request, 'confirm_delete.html', {'account': account})

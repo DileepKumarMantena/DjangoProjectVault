@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import UserRegistrationModel
+from .models import UserRegistrationModel,Account
 
 class RegistrationForm(forms.ModelForm):
     email = forms.EmailField(required=True)
@@ -35,3 +35,7 @@ class RegistrationForm(forms.ModelForm):
                 phone_number=self.cleaned_data['phone_number']
             )
         return user
+class AccountForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['name', 'balance']

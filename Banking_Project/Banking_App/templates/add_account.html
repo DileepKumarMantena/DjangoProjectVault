@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ForBright Bank</title>
+    <title>Add Account - ForBright Bank</title>
     <style>
         /* General Styles */
         body {
@@ -24,6 +22,7 @@
             color: #ffffff;
             padding: 15px;
             text-align: center;
+            position: relative;
         }
 
         footer {
@@ -74,47 +73,31 @@
             margin-top: 10px;
         }
 
-        /* Dashboard Styles */
-        .account-details {
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+        /* Page-specific Styles */
+        .add-account-header {
             margin-bottom: 20px;
-        }
-
-        .actions ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .actions li {
-            margin-bottom: 10px;
-        }
-
-        .actions a {
-            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>ForBright Login</h1>
+            <h1>Add a New Account</h1>
         </header>
 
         <main>
-            <form method="POST" class="form">
-                {% csrf_token %}
-                <input type="text" name="username_or_email_or_phone" placeholder="Username" required class="input-field">
-                <input type="password" name="password" placeholder="Password" required class="input-field">
-                <button type="submit" class="btn">Login</button>
-            </form>
-
-            {% if error %}
-                <p class="error">{{ error }}</p>
-            {% endif %}
+            <section class="form">
+                <h2 class="add-account-header">Account Details</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn">Add Account</button>
+                </form>
+            </section>
         </main>
+
+        <footer>
+            <p>&copy; 2024 ForBright Bank. All rights reserved.</p>
+        </footer>
     </div>
 </body>
-</html>

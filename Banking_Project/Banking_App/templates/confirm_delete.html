@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ForBright Bank</title>
+    <title>Confirm Delete</title>
     <style>
         /* General Styles */
         body {
@@ -24,6 +24,7 @@
             color: #ffffff;
             padding: 15px;
             text-align: center;
+            position: relative;
         }
 
         footer {
@@ -32,6 +33,23 @@
             padding: 10px;
             text-align: center;
             margin-top: 20px;
+        }
+
+        /* Logout Link Styles */
+        .logout {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .logout a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout a:hover {
+            color: #cc0000;
         }
 
         /* Forms */
@@ -68,13 +86,7 @@
             background-color: #002244;
         }
 
-        /* Error Messages */
-        .error {
-            color: #ff0000;
-            margin-top: 10px;
-        }
-
-        /* Dashboard Styles */
+        /* Confirm Delete Styles */
         .account-details {
             background: #ffffff;
             border: 1px solid #ddd;
@@ -82,39 +94,31 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-
-        .actions ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .actions li {
-            margin-bottom: 10px;
-        }
-
-        .actions a {
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>ForBright Login</h1>
+            <h1>Confirm Deletion</h1>
+            <div class="logout">
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
         </header>
-
+        
         <main>
-            <form method="POST" class="form">
-                {% csrf_token %}
-                <input type="text" name="username_or_email_or_phone" placeholder="Username" required class="input-field">
-                <input type="password" name="password" placeholder="Password" required class="input-field">
-                <button type="submit" class="btn">Login</button>
-            </form>
-
-            {% if error %}
-                <p class="error">{{ error }}</p>
-            {% endif %}
+            <section class="account-details">
+                <h2>Are you sure you want to delete the account "{{ account.name }}"?</h2>
+                <form action="{% url 'delete_account' account.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="btn" style="background-color: #ff0000;">Delete</button>
+                    <a href="{% url 'dashboard' %}" class="btn">Cancel</a>
+                </form>
+            </section>
         </main>
+
+        <footer>
+            <p>&copy; 2024 ForBright Bank. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
