@@ -24,6 +24,7 @@
             color: #ffffff;
             padding: 15px;
             text-align: center;
+            position: relative;
         }
 
         footer {
@@ -32,6 +33,23 @@
             padding: 10px;
             text-align: center;
             margin-top: 20px;
+        }
+
+        /* Logout Link Styles */
+        .logout {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        .logout a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout a:hover {
+            color: #cc0000;
         }
 
         /* Forms */
@@ -101,6 +119,9 @@
     <div class="container">
         <header>
             <h1>Welcome to Your Dashboard, {{ user.username }}!</h1>
+            <div class="logout">
+                <a href="{% url 'logout' %}">Logout</a> <!-- Red logout link aligned to the right -->
+            </div>
         </header>
         
         <main>

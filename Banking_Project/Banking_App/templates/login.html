@@ -106,7 +106,7 @@
         <main>
             <form method="POST" class="form">
                 {% csrf_token %}
-                <input type="text" name="username_or_email_or_phone" placeholder="Username, Email, or Phone Number" required class="input-field">
+                <input type="text" name="username_or_email_or_phone" placeholder="Username" required class="input-field">
                 <input type="password" name="password" placeholder="Password" required class="input-field">
                 <button type="submit" class="btn">Login</button>
             </form>

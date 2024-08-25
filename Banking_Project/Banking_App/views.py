@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import UserRegistrationModel
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 
 def register(request):
@@ -55,3 +56,7 @@ def user_login(request):
 @login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('login')
