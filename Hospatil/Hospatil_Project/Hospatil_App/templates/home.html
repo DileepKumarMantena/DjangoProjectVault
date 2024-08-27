@@ -107,49 +107,56 @@
 <body>
     <div class="container">
         <header>
-            <h1>Dashboard</h1>
+            <h1>Home</h1>
         </header>
 
         <!-- Navigation Bar -->
         <nav>
             <ul>
                 <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="#">Appointments</a></li>
+                <li><a href="#">Medical Records</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </nav>
 
-        <main>
-           <section class="account-details">
-                <h2>Your Account Details</h2>
-                <p><strong>Username:</strong> {{ user.username }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-                <p><strong>Phone Number:</strong> {{ user.userregistrationmodel.phone_number }}</p>
-                <div class="recent-activity">
-                    <h2>Recent Activity</h2>
-                    <ul>
-                        <li>Logged in on August 26, 2024</li>
-                        <li>Updated profile on August 24, 2024</li>
-                        <li>Scheduled appointment for August 30, 2024</li>
-                    </ul>
-                </div>
+<!--        <main>-->
+<!--            <section class="dashboard">-->
+<!--                <div class="profile-summary">-->
+<!--                    <h2>Profile Summary</h2>-->
+<!--                    <p><strong>Username:</strong> john_doe</p>-->
+<!--                    <p><strong>Email:</strong> john.doe@example.com</p>-->
+<!--                    <p><strong>Phone Number:</strong> 123-456-7890</p>-->
+<!--                </div>-->
 
-                <div class="appointments">
-                    <h2>Upcoming Appointments</h2>
-                    <ul>
-                        <li>Doctor's Appointment on August 30, 2024</li>
-                        <li>Follow-up Checkup on September 15, 2024</li>
-                    </ul>
-                </div>
+<!--                <div class="recent-activity">-->
+<!--                    <h2>Recent Activity</h2>-->
+<!--                    <ul>-->
+<!--                        <li>Logged in on August 26, 2024</li>-->
+<!--                        <li>Updated profile on August 24, 2024</li>-->
+<!--                        <li>Scheduled appointment for August 30, 2024</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
 
-                <div class="notifications">
-                    <h2>Notifications</h2>
-                    <p>No new notifications.</p>
-                </div>
+<!--                <div class="appointments">-->
+<!--                    <h2>Upcoming Appointments</h2>-->
+<!--                    <ul>-->
+<!--                        <li>Doctor's Appointment on August 30, 2024</li>-->
+<!--                        <li>Follow-up Checkup on September 15, 2024</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
 
-                <a href="#" class="btn">Update Profile</a>
-                <a href="#" class="btn">Change Password</a>
-                <a href="#" class="btn">View More Details</a>
-            </section>
-        </main>
+<!--                <div class="notifications">-->
+<!--                    <h2>Notifications</h2>-->
+<!--                    <p>No new notifications.</p>-->
+<!--                </div>-->
+
+<!--                <a href="#" class="btn">Update Profile</a>-->
+<!--                <a href="#" class="btn">Change Password</a>-->
+<!--                <a href="#" class="btn">View More Details</a>-->
+<!--            </section>-->
+<!--        </main>-->
 
         <footer>
             <p>&copy; 2024 Your Hospital. All rights reserved.</p>

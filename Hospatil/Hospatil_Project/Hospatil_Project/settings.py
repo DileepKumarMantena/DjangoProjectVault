@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'Hospatil_Project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hospatil_project_database',#SampleDB
+        'NAME': 'sruji1',#SampleDB
         'USER': 'root',
-        'PASSWORD': 'Dileep@9505816053',
+        'PASSWORD': 'Sruji@123',
         'HOST': 'localhost',  # Or the IP address of your MySQL server
         'PORT': '3306',       # Default MySQL port
     }

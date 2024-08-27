@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Profile</title>
     <style>
         /* General Styles */
         body {
@@ -62,8 +62,8 @@
             text-decoration: underline;
         }
 
-        /* Dashboard Styles */
-        .dashboard {
+        /* Profile Page Styles */
+        .profile-container {
             background: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -71,20 +71,8 @@
             margin-bottom: 20px;
         }
 
-        .section {
-            margin-bottom: 20px;
-        }
-
-        .section h2 {
+        .profile-container h2 {
             margin-top: 0;
-        }
-
-        .profile-summary, .recent-activity, .appointments, .notifications {
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 10px;
         }
 
         .btn {
@@ -107,47 +95,25 @@
 <body>
     <div class="container">
         <header>
-            <h1>Dashboard</h1>
+            <h1>User Profile</h1>
         </header>
-
-        <!-- Navigation Bar -->
         <nav>
             <ul>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+
+                <li><a href="{% url 'profile' %}"></a></li>
+
             </ul>
         </nav>
 
         <main>
-           <section class="account-details">
-                <h2>Your Account Details</h2>
+            <section class="profile-container">
+                <h2>Your Profile Information</h2>
                 <p><strong>Username:</strong> {{ user.username }}</p>
                 <p><strong>Email:</strong> {{ user.email }}</p>
                 <p><strong>Phone Number:</strong> {{ user.userregistrationmodel.phone_number }}</p>
-                <div class="recent-activity">
-                    <h2>Recent Activity</h2>
-                    <ul>
-                        <li>Logged in on August 26, 2024</li>
-                        <li>Updated profile on August 24, 2024</li>
-                        <li>Scheduled appointment for August 30, 2024</li>
-                    </ul>
-                </div>
-
-                <div class="appointments">
-                    <h2>Upcoming Appointments</h2>
-                    <ul>
-                        <li>Doctor's Appointment on August 30, 2024</li>
-                        <li>Follow-up Checkup on September 15, 2024</li>
-                    </ul>
-                </div>
-
-                <div class="notifications">
-                    <h2>Notifications</h2>
-                    <p>No new notifications.</p>
-                </div>
 
                 <a href="#" class="btn">Update Profile</a>
                 <a href="#" class="btn">Change Password</a>
-                <a href="#" class="btn">View More Details</a>
             </section>
         </main>
 

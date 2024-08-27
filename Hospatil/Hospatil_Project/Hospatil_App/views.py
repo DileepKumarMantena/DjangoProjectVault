@@ -47,7 +47,7 @@ def user_login(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dashboard')  # Redirect to the home page or any other page
+            return redirect('home')  # Redirect to the home page or any other page
         else:
             return render(request, 'login.html', {'error': 'Invalid login credentials'})
     
@@ -55,8 +55,14 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'home.html')
 
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+def profile_view(request):
+    return render(request, 'profile.html')
+
+def dashboard_view(request):
+    return render(request, 'dashboard.html')
