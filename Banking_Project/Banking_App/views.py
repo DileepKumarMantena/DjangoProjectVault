@@ -10,6 +10,9 @@ from .models import UserRegistrationModel,Account
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect,get_object_or_404
+from django.shortcuts import render
+from .forms import CurrencyConverterForm
+from .services import CurrencyConverter
 
 
 def register(request):
@@ -95,3 +98,19 @@ def delete_account(request, account_id):
         account.delete()
         return redirect('dashboard')
     return render(request, 'confirm_delete.html', {'account': account})
+
+@login_required
+def convert_currency(request):
+    result = None
+    if request.method == 'POST':
+        form = CurrencyConverterForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            from_currency = form.cleaned_data['from_currency']
+            to_currency = form.cleaned_data['to_currency']
+            converter = CurrencyConverter(api_key=' 95a259e8b3f608ca1125fc6e')
+            result = converter.convert(amount, from_currency, to_currency)
+    else:
+        form = CurrencyConverterForm()
+
+    return render(request,'convert.html', {'form': form, 'result': result})

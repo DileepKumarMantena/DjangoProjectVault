@@ -39,3 +39,9 @@ class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['name', 'balance']
+    
+
+class CurrencyConverterForm(forms.Form):
+    amount = forms.DecimalField(decimal_places=2, max_digits=10)
+    from_currency = forms.CharField(max_length=3)
+    to_currency = forms.CharField(max_length=3)
