@@ -69,3 +69,6 @@ def dashboard_view(request):
 
 def appointment_view(request):
     return render(request, 'appointment.html')
+
+def medicalrecord_view(request):
+    return render(request, 'medicalrecord.html')

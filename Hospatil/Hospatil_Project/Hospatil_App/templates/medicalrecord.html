@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+        .patient-info {
+            margin-bottom: 20px;
+        }
+        .patient-info h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .patient-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .no-records {
+            text-align: center;
+            color: #666;
+        }
+            nav {
+            background-color: #002244;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+         nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Records</h1>
+          <nav>
+            <ul>
+                <li><a href="{% url 'medicalrecord' %}">Medical Records</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="patient-info">
+            <h2>Patient Information</h2>
+            <p><strong>Name:</strong> Jane Doe</p>
+            <p><strong>Date of Birth:</strong> January 1, 1980</p>
+            <p><strong>Medical ID:</strong> 1234567890</p>
+            <p><strong>Gender:</strong> Female</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Condition</th>
+                    <th>Treatment</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Row -->
+                <tr>
+                    <td>2024-08-15</td>
+                    <td>Dr. Smith</td>
+                    <td>Flu</td>
+                    <td>Medication</td>
+                    <td>Patient recovered well.</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
