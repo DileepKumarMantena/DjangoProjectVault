@@ -66,3 +66,6 @@ def profile_view(request):
 
 def dashboard_view(request):
     return render(request, 'dashboard.html')
+
+def appointment_view(request):
+    return render(request, 'appointment.html')
