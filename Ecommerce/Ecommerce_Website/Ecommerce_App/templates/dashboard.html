@@ -52,22 +52,35 @@
             color: #cc0000;
         }
 
-        /* Forms */
-        .form {
+        /* Image Styles */
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Actions */
+        .actions {
             background: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
-            max-width: 500px;
-            margin: 20px auto;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .input-field {
-            width: calc(100% - 22px);
-            padding: 10px;
+        .actions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .actions li {
             margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
         }
 
         .btn {
@@ -79,65 +92,39 @@
             cursor: pointer;
             text-decoration: none;
             text-align: center;
-            display: inline-block;
+            display: block;
+            margin: 0 auto;
+            width: 150px;
         }
 
         .btn:hover {
             background-color: #002244;
-        }
-
-        /* Error Messages */
-        .error {
-            color: #ff0000;
-            margin-top: 10px;
-        }
-
-        /* Dashboard Styles */
-        .account-details {
-            background: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .actions ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .actions li {
-            margin-bottom: 10px;
-        }
-
-        .actions a {
-            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Welcome to Your Dashboard, {{ user.username }}!</h1>
+            <h1>Welcome to Your Dashboard!</h1>
             <div class="logout">
                 <a href="{% url 'logout' %}">Logout</a> <!-- Red logout link aligned to the right -->
             </div>
         </header>
         
         <main>
-            <section class="account-details">
-                <h2>Your Account Details</h2>
-                <p><strong>Username:</strong> {{ user.username }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-                <p><strong>Phone Number:</strong> {{ user.userregistrationmodel.phone_number }}</p>
+            <!-- Image Section -->
+            <section class="image-container">
+                <img src="https://www.samarthdigitalhouse.com/sdhgallery/blog/14.png?v=1651134959" alt="Ecommerce Banner">
             </section>
 
+            <!-- Actions Section -->
             <section class="actions">
                 <h2>Actions</h2>
                 <ul>
-                    <li><a href="#" class="btn">Update Profile</a></li>
-                    <li><a href="#" class="btn">Change Password</a></li>
-                    <li><a href="#" class="btn">View Recent Activity</a></li>
+                    <li><a href="{% url 'product_list' %}" class="btn">View Products</a></li>
+                    <li><a href="{% url 'cart_detail' %}" class="btn">View Cart</a></li>
+                    <li><a href="{% url 'checkout' %}" class="btn">Checkout</a></li>
+                    <li><a href="{% url 'order_history' %}" class="btn">Order History</a></li>
                 </ul>
             </section>
         </main>
